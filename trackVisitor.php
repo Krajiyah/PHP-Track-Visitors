@@ -1,7 +1,7 @@
 <?php
 // REQUIRES: page
 
-$conn = new PDO('mysql:host=localhost;dbname=showcase', 'root', '');
+$conn = new PDO('mysql:host=localhost;dbname=dbname', 'root', '');
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 function getIsCrawler() {
@@ -46,7 +46,7 @@ if ($iscrawler == False)
 		setcookie('IP', $ip, time()+31556926);
 		setcookie('date', $date, time()+31556926);
 		setcookie('visited', $_REQUEST['page'], time()+31556926);
-		$comm = $conn->prepare("insert into Visitors (ID, IP, visited, date) values ('".$nextID."', '".$ip."', 'admin.php', '".$date."')");
+		$comm = $conn->prepare("insert into Visitors (ID, IP, visited, date) values ('".$nextID."', '".$ip."', 'page name', '".$date."')");
 		$comm->execute();
 	}
 
